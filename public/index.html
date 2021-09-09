@@ -1,0 +1,111 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script>
+        var socket = io();
+    //     socket.on('message', function(data){document.write(data)});
+    //     socket.on('broadcast',function(data){
+    //      document.body.innerHTML = '';
+    //      document.write(data.description);
+    //   });
+
+    function setUsername(){
+         socket.emit('setUsername', document.getElementById('name').value);
+      };
+      var user;
+      socket.on('userExists', function(data){
+         document.getElementById('error-container').innerHTML = data;
+      });
+      socket.on('userSet', function(data){
+         user = data.username;
+         document.body.innerHTML = '<input type="text" id="message">\
+         <button type="button" name="button" onclick="sendMessage()">Send</button>\
+         <div id="message-container"></div>';
+      });
+      function sendMessage(){
+         var msg = document.getElementById('message').value;
+         if(msg){
+            socket.emit('msg', {message: msg, user: user});
+         }
+      }
+      socket.on('newmsg', function(data){
+         if(user){
+            document.getElementById('message-container').innerHTML +='<div><b>' + data.user + '</b>: ' + data.message + '</div>'
+         }
+      })
+</script>
+</head>
+<body>
+    <div id="error-container"></div>
+    <input id="name" type="text" name="name" value="" placeholder="Enter your name!">
+    <button type="button" name="button" onclick=setUsername()>Let me chat!</button>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>WebCage Chat App</title>
+  </head>
+  <body>
+    <div class="join-container">
+      <header class="join-header">
+        <h1><i class="fas fa-kiwi-bird"></i> WebCage </h1>
+      </header>
+
+      <main class="join-main">
+        <form action="chat.html">
+          <div class="form-control">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter email address..."
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username..."
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label for="room">Chat Channel</label>
+            <select name="room" id="room">
+              <option value="Business">Business </option>
+              <option value="Technology">Technology</option>
+              <option value="Sport">Sports</option>
+              <option value="news">International News</option>
+              <option value="cats">Just Cats</option>
+            </select>
+          </div>
+          <div class="flex">
+            <button type="submit" class="btn">Login to Chat</button>
+          </div>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>

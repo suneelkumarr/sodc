@@ -1,0 +1,37 @@
+.join-container{
+    height: 300px;
+    width: 400px;
+    align-content: center;
+    margin-left: 240px;
+    background-color: black;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+}
+
+
+header {
+    text-align: center;
+    margin-top: 80px;
+    text-decoration: white;
+    color: white;
+}
+
+.form-control {
+    color: white;
+    padding-left: 40px;
+    padding: 20px;
+}
+
+label {
+    position:sticky
+}
+
+button {
+   margin-left: 150px;
+}
+
+#username{
+    width: 200px;
+    
+
+}
